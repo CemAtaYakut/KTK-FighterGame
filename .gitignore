@@ -1,0 +1,20 @@
+# Oracle JDK dosyalarını ekleme
+Oracle_JDK-23/
+
+# Python cache dosyaları
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE ve sistem dosyaları
+.vscode/
+*.log
+*.tmp
+
+
+# İşletim sistemi dosyaları
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
