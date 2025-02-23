@@ -1,5 +1,7 @@
 # KTK-STF
 Customized STF Game clone development for our student club
+
+Çalıştırmak için oyun dosyanız içine Oracle_JDK-23 eklentisini kurmanız gerekmekte. VS Code üzerinden ekleyebilirsiniz.
 # Süreç
 
 Geliştirme süreci 4 bölümden oluşacak.
