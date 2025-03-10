@@ -35,8 +35,9 @@ def draw_health_bar(health, x ,y):
     pygame.draw.rect(screen, YELLOW, (x, y, 400 * ratio, 30))
 
 #create two instances of fighters
-fighter_1 = Fighter(SCREEN_WIDTH * 0.2, SCREEN_HEIGHT * 0.52)
-fighter_2 = Fighter(SCREEN_WIDTH * 0.7, SCREEN_HEIGHT * 0.52)
+fighter_1 = Fighter(SCREEN_WIDTH * 0.2, SCREEN_HEIGHT * 0.52, SCREEN_WIDTH, SCREEN_HEIGHT)
+fighter_2 = Fighter(SCREEN_WIDTH * 0.7, SCREEN_HEIGHT * 0.52, SCREEN_WIDTH, SCREEN_HEIGHT)
+
 
 
 
