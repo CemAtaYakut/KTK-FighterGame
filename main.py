@@ -29,13 +29,13 @@ def draw_bg():
 # SAĞLIK BARI ÇİZME
 def draw_health_bar(health, x ,y):
     ratio = health / 100
-    pygame.draw.rect(screen, WHITE, (x - 1, y - 1, 404, 34))
-    pygame.draw.rect(screen, RED, (x, y, 400, 30))
-    pygame.draw.rect(screen, YELLOW, (x, y, 400 * ratio, 30))
+    pygame.draw.rect(screen, WHITE, (x - 1, y - 1, 804, 54))
+    pygame.draw.rect(screen, RED, (x, y, 800, 50))
+    pygame.draw.rect(screen, YELLOW, (x, y, 800 * ratio, 50))
 
 #create two instances of fighters
-fighter_1 = Fighter(200, 310)
-fighter_2 = Fighter(700, 310)
+fighter_1 = Fighter(400, 620)
+fighter_2 = Fighter(1400, 620)
 
 
 #------------- OYUN DÖNGÜSÜ -------------
@@ -48,8 +48,8 @@ while run:
     draw_bg()
 
     #SHOW PLAYER STATS
-    draw_health_bar(fighter_1.health, 20, 20)
-    draw_health_bar(fighter_2.health, 580, 20) 
+    draw_health_bar(fighter_1.health, 50, 50)
+    draw_health_bar(fighter_2.health, 1070, 50) 
 
     #karakterleri hareket ettir
     fighter_1.move(SCREEN_WIDTH, SCREEN_HEIGHT, screen, fighter_2)
