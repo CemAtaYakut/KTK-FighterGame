@@ -3,10 +3,11 @@ from fighter import Fighter
 
 pygame.init()
 
-SCREEN_WIDTH = 1920
-SCREEN_HEIGHT = 1080
+info = pygame.display.Info()
+SCREEN_WIDTH = info.current_w
+SCREEN_HEIGHT = info.current_h
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.FULLSCREEN)
 
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Fener Arena")
 
 #set framerate
@@ -34,8 +35,10 @@ def draw_health_bar(health, x ,y):
     pygame.draw.rect(screen, YELLOW, (x, y, 800 * ratio, 50))
 
 #create two instances of fighters
-fighter_1 = Fighter(400, 620)
-fighter_2 = Fighter(1400, 620)
+fighter_1 = Fighter(SCREEN_WIDTH * 0.2, SCREEN_HEIGHT * 0.52, SCREEN_WIDTH, SCREEN_HEIGHT)
+fighter_2 = Fighter(SCREEN_WIDTH * 0.7, SCREEN_HEIGHT * 0.52, SCREEN_WIDTH, SCREEN_HEIGHT)
+
+
 
 
 #------------- OYUN DÖNGÜSÜ -------------
@@ -48,9 +51,9 @@ while run:
     draw_bg()
 
     #SHOW PLAYER STATS
-    draw_health_bar(fighter_1.health, 50, 50)
-    draw_health_bar(fighter_2.health, 1070, 50) 
-
+    draw_health_bar(fighter_1.health, SCREEN_WIDTH * 0.02, SCREEN_HEIGHT * 0.03)
+    draw_health_bar(fighter_2.health, SCREEN_WIDTH * 0.58, SCREEN_HEIGHT * 0.03)
+ 
     #karakterleri hareket ettir
     fighter_1.move(SCREEN_WIDTH, SCREEN_HEIGHT, screen, fighter_2)
     #fighter_2.move(SCREEN_WIDTH, SCREEN_HEIGHT, screen, fighter_1)
