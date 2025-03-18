@@ -1,14 +1,9 @@
 import pygame
 
 class Fighter():
-    def __init__(self, x, y, screen_width, screen_height):
-        #oyuncu özellikleri
-        self.width = int(screen_width * 0.08)   
-        self.height = int(screen_height * 0.16) 
-        
-
+    def __init__(self, x, y):
         self.flip = False
-        self.rect = pygame.Rect((x, y, self.width, self.height))
+        self.rect = pygame.Rect((x, y, 160, 260))
         self.vel_y = 0
         self.jump = False
         self.attacking = False
@@ -16,14 +11,10 @@ class Fighter():
         self.attack_cooldown = 0
         self.hit = False
         self.health = 100
-        self.screen_width = screen_width
-        self.screen_height = screen_height
-        self.attack_cooldown = 0
 
     def move(self, screen_width, screen_height, surface, target):  #HAREKET METODU, Hız ayarlaması buradan yapılacak.
-        SPEED = self.screen_width * 0.01
-        GRAVITY = self.screen_height * 0.003
-        JUMP_POWER = -self.screen_height * 0.05
+        SPEED = 15
+        GRAVITY = 2.5
         dx = 0
         dy = 0
 
@@ -35,15 +26,15 @@ class Fighter():
             self.attacking = False
 
         #Yalnızca saldırı yapamıyorken diğer hareketler yapılabilir
-        if not self.attacking:
+        if self.attacking == False:
             #HAREKET / MOVEMENT a,d,w
             if key[pygame.K_a]:
                 dx = -SPEED
             if key[pygame.K_d]:
                 dx = SPEED
             #ZIPLAMA / JUMP
-            if key[pygame.K_w] and not self.jump:
-                self.vel_y = JUMP_POWER
+            if key[pygame.K_w] and self.jump == False:
+                self.vel_y = -45
                 self.jump = True
             #SALDIRI / ATTACK
             if key[pygame.K_m] or key[pygame.K_l]:
@@ -81,14 +72,13 @@ class Fighter():
         self.rect.y += dy
 
     def attack(self, surface, target):
-        if self.attacking:
-            return
-        self.attack_cooldown = 20
-        self.attacking = True
-        attack_width = self.width * 2.5
-        attacking_rect = pygame.Rect(self.rect.centerx - (2 * self.rect.width * self.flip), self.rect.y, 2 * self.rect.width, self.rect.height)
-        if attacking_rect.colliderect(target.rect):
-            target.health -= 10
+        if self.attack_cooldown == 0:
+        #execute attack
+            self.attacking = True
+            attacking_rect = pygame.Rect(self.rect.centerx - (2 * self.rect.width * self.flip), self.rect.y, 2 * self.rect.width, self.rect.height)
+            if attacking_rect.colliderect(target.rect):
+                target.health -= 1
+                target.hit = True    
         
         pygame.draw.rect(surface, (0, 255, 0), attacking_rect)
 
